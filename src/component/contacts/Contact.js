@@ -1,7 +1,7 @@
 // Use 'rcc' snippet to generate template
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Consumer } from '../context';
+import { Consumer } from '../../context';
 
 class Contact extends Component {
   state = {
@@ -25,24 +25,24 @@ class Contact extends Component {
         {value => {
           const { dispatch } = value;
           return (
-            <div className="card card-body mb-3">
+            <div className='card card-body mb-3'>
               <h4>
                 {name}{' '}
                 <i
                   onClick={this.onShowClick}
                   style={{ cursor: 'pointer' }}
-                  className="fas fa-caret-down"
+                  className='fas fa-caret-down'
                 />
                 <i
-                  className="fas fa-trash"
+                  className='fas fa-trash'
                   style={{ cursor: 'pointer', float: 'right' }}
                   onClick={this.onDeleteClick.bind(this, id, dispatch)}
                 />
               </h4>
               {showContactInfo ? (
-                <ul className="list-group">
-                  <li className="list-group-item">{email}</li>
-                  <li className="list-group-item">{phone}</li>
+                <ul className='list-group'>
+                  <li className='list-group-item'>{email}</li>
+                  <li className='list-group-item'>{phone}</li>
                 </ul>
               ) : null}
             </div>
