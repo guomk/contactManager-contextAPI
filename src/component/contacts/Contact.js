@@ -1,6 +1,7 @@
 // Use 'rcc' snippet to generate template
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import { Consumer } from '../../context';
 
 class Contact extends Component {
@@ -13,7 +14,10 @@ class Contact extends Component {
   };
 
   onDeleteClick = (id, dispatch) => {
-    dispatch({ type: 'DELETE_CONTACT', payload: id });
+    // NOTE axios is a third party tool for handle HttpResponse
+    axios
+      .delete(`https://jsonplaceholder.typicode.com/users/${id}`)
+      .then(response => dispatch({ type: 'DELETE_CONTACT', payload: id }));
   };
 
   render() {
@@ -26,7 +30,7 @@ class Contact extends Component {
           const { dispatch } = value;
           return (
             <div className='card card-body mb-3'>
-              <h4>
+              <h4 className='card-title'>
                 {name}{' '}
                 <i
                   onClick={this.onShowClick}
