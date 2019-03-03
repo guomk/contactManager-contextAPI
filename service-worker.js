@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/guomk/contactManager-contextAPI/precache-manifest.c73c760e1d1990c72a67a830d1227de5.js"
+  "/contactManager-contextAPI/precache-manifest.85c82e4be781b2375fb4a0d019f1ecb1.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/guomk/contactManager-contextAPI/index.html", {
+workbox.routing.registerNavigationRoute("/contactManager-contextAPI/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
