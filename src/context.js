@@ -30,6 +30,7 @@ export class Provider extends Component {
     }
   };
 
+  // NOTE componentDidMount() is invoked immediately after a component is mounted (inserted into the tree)
   componentDidMount() {
     axios.get('https://jsonplaceholder.typicode.com/users').then(response => {
       this.setState({
