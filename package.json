@@ -2,11 +2,13 @@
   "name": "contactmanager",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://guomk.github.io/contactManager-contextAPI",
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "braces": "^2.3.2",
     "classnames": "^2.2.6",
+    "gh-pages": "^2.0.1",
     "jquery": "^1.9.1",
     "materialize-css": "^1.0.0-rc.2",
     "popper.js": "^1.14.7",
@@ -17,6 +19,7 @@
     "uuid": "^3.3.2"
   },
   "scripts": {
+    "deploy": "npm run build && gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
