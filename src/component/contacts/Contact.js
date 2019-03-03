@@ -1,5 +1,6 @@
 // Use 'rcc' snippet to generate template
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { Consumer } from '../../context';
@@ -13,11 +14,15 @@ class Contact extends Component {
     this.setState({ showContactInfo: !this.state.showContactInfo });
   };
 
-  onDeleteClick = (id, dispatch) => {
+  onDeleteClick = async (id, dispatch) => {
     // NOTE axios is a third party tool for handle HttpResponse
-    axios
-      .delete(`https://jsonplaceholder.typicode.com/users/${id}`)
-      .then(response => dispatch({ type: 'DELETE_CONTACT', payload: id }));
+    try {
+      await axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
+      dispatch({ type: 'DELETE_CONTACT', payload: id });
+    } catch (e) {
+      // Only delete from DOM
+      dispatch({ type: 'DELETE_CONTACT', payload: id });
+    }
   };
 
   render() {
@@ -39,9 +44,20 @@ class Contact extends Component {
                 />
                 <i
                   className='fas fa-trash'
-                  style={{ cursor: 'pointer', float: 'right' }}
+                  style={{ cursor: 'pointer', float: 'right', color: 'red' }}
                   onClick={this.onDeleteClick.bind(this, id, dispatch)}
                 />
+                <Link to={`contact/edit/${id}`}>
+                  <i
+                    className='fas fa-pencil-alt'
+                    style={{
+                      cursor: 'pointer',
+                      float: 'right',
+                      color: 'black',
+                      marginRight: '1rem'
+                    }}
+                  />
+                </Link>
               </h4>
               {showContactInfo ? (
                 <ul className='list-group'>
